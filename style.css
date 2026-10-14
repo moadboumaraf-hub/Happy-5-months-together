@@ -1,0 +1,850 @@
+/* ========================================
+   TWO DATES, ONE STORY
+   A romantic memory in black, brown & beige
+======================================== */
+
+/* ---------- 1. VARIABLES ---------- */
+
+:root {
+    --background: #100d0b;
+    --background-soft: #18120f;
+    --card: rgba(34, 25, 20, 0.82);
+    --brown: #8b6248;
+    --brown-light: #b58b6c;
+    --beige: #e8d5bd;
+    --beige-soft: #cbb59c;
+    --text-muted: #a39485;
+    --gold: #d5b58d;
+    --border: rgba(213, 181, 141, 0.2);
+    --glow: rgba(139, 98, 72, 0.16);
+}
+
+/* ---------- 2. RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--background);
+    color: var(--beige);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    font: inherit;
+}
+
+/* ---------- 3. BACKGROUND ---------- */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 8%,
+            rgba(110, 72, 48, 0.2),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 0% 60%,
+            rgba(83, 52, 35, 0.1),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 100% 85%,
+            rgba(103, 68, 46, 0.1),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #100d0b 0%,
+            #15100d 50%,
+            #100d0b 100%
+        );
+}
+
+.background-glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(120, 77, 49, 0.06);
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ---------- 4. STARS ---------- */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.stars span {
+    position: absolute;
+    display: block;
+    color: var(--gold);
+    opacity: 0.35;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.stars span:nth-child(1) {
+    top: 9%;
+    left: 12%;
+    font-size: 13px;
+}
+
+.stars span:nth-child(2) {
+    top: 17%;
+    left: 82%;
+    font-size: 22px;
+    animation-delay: 1s;
+}
+
+.stars span:nth-child(3) {
+    top: 28%;
+    left: 91%;
+    font-size: 16px;
+    animation-delay: 2s;
+}
+
+.stars span:nth-child(4) {
+    top: 36%;
+    left: 7%;
+    font-size: 24px;
+    animation-delay: 0.5s;
+}
+
+.stars span:nth-child(5) {
+    top: 49%;
+    left: 88%;
+    font-size: 12px;
+    animation-delay: 1.5s;
+}
+
+.stars span:nth-child(6) {
+    top: 59%;
+    left: 18%;
+    font-size: 20px;
+    animation-delay: 2.5s;
+}
+
+.stars span:nth-child(7) {
+    top: 68%;
+    left: 94%;
+    font-size: 18px;
+    animation-delay: 1s;
+}
+
+.stars span:nth-child(8) {
+    top: 78%;
+    left: 6%;
+    font-size: 14px;
+    animation-delay: 3s;
+}
+
+.stars span:nth-child(9) {
+    top: 88%;
+    left: 78%;
+    font-size: 17px;
+    animation-delay: 0.7s;
+}
+
+.stars span:nth-child(10) {
+    top: 93%;
+    left: 27%;
+    font-size: 21px;
+    animation-delay: 2s;
+}
+
+.stars span:nth-child(11) {
+    top: 42%;
+    left: 48%;
+    font-size: 12px;
+    animation-delay: 1.8s;
+}
+
+.stars span:nth-child(12) {
+    top: 5%;
+    left: 62%;
+    font-size: 18px;
+    animation-delay: 2.3s;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.15);
+    }
+}
+
+/* ---------- 5. MAIN LAYOUT ---------- */
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+/* ---------- 6. HERO SECTION ---------- */
+
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 90px 0 65px;
+    animation: fadeUp 1.2s ease both;
+}
+
+.eyebrow {
+    color: var(--brown-light);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    line-height: 1.8;
+}
+
+.hero h1 {
+    margin-top: 26px;
+    color: var(--beige);
+    font-size: clamp(43px, 8vw, 76px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+}
+
+.hero h1 span {
+    color: var(--brown-light);
+    font-style: italic;
+}
+
+.intro {
+    margin-top: 27px;
+    color: var(--beige-soft);
+    font-size: clamp(14px, 2.5vw, 17px);
+    line-height: 1.9;
+}
+
+.heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 210px;
+    margin: 34px auto;
+}
+
+.heart-divider span {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--brown)
+    );
+}
+
+.heart-divider span:last-child {
+    background: linear-gradient(
+        90deg,
+        var(--brown),
+        transparent
+    );
+}
+
+.heart-divider b {
+    color: var(--gold);
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.invitation {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 2;
+    font-style: italic;
+}
+
+/* ---------- 7. TIMELINE ---------- */
+
+.timeline {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 15px 0 50px;
+}
+
+.chapter {
+    position: relative;
+    padding-left: 57px;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 26px;
+    left: 0;
+    z-index: 2;
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(213, 181, 141, 0.45);
+    border-radius: 50%;
+    background: #17110e;
+    box-shadow: 0 0 25px rgba(139, 98, 72, 0.12);
+}
+
+.timeline-marker span {
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.chapter-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 36px 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(49, 35, 27, 0.82),
+            rgba(25, 19, 15, 0.94)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 4px 24px 4px 24px;
+
+    box-shadow:
+        0 15px 55px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    transition:
+        border-color 0.4s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.chapter-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+
+    background: linear-gradient(
+        180deg,
+        transparent,
+        var(--brown-light),
+        transparent
+    );
+
+    opacity: 0.7;
+}
+
+.chapter-card:hover {
+    border-color: rgba(213, 181, 141, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.chapter-label {
+    color: var(--brown-light);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.8;
+}
+
+.date {
+    margin-top: 20px;
+    color: var(--beige-soft);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.date span {
+    color: var(--gold);
+    font-size: 27px;
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+    margin: 0 4px;
+}
+
+.chapter-card h2 {
+    margin-top: 17px;
+    color: var(--beige);
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.small-divider {
+    margin: 22px 0;
+    color: var(--brown-light);
+    font-size: 18px;
+}
+
+.chapter-text {
+    color: #e1cbb2;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.chapter-note {
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+.chapter-note em {
+    color: var(--gold);
+}
+
+.chapter-symbol {
+    position: absolute;
+    right: 22px;
+    bottom: 12px;
+    color: rgba(181, 139, 108, 0.13);
+    font-size: 65px;
+    line-height: 1;
+}
+
+/* ---------- 8. TIMELINE CONNECTOR ---------- */
+
+.timeline-connector {
+    position: relative;
+    height: 105px;
+    margin-left: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1px;
+    background: linear-gradient(
+        180deg,
+        rgba(181, 139, 108, 0.55),
+        rgba(181, 139, 108, 0.05)
+    );
+}
+
+.timeline-connector span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    color: var(--gold);
+    font-size: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--background);
+}
+
+/* ---------- 9. REVEAL BUTTON ---------- */
+
+.reveal-area {
+    padding: 0 0 60px 57px;
+    text-align: center;
+}
+
+.reveal-hint {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+}
+
+.reveal-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: 100%;
+    max-width: 340px;
+    min-height: 55px;
+    padding: 14px 20px;
+
+    color: var(--beige);
+    background: rgba(96, 64, 44, 0.17);
+
+    border: 1px solid rgba(181, 139, 108, 0.45);
+    border-radius: 2px 16px 2px 16px;
+
+    font-size: 13px;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.reveal-button:hover {
+    background: rgba(139, 98, 72, 0.25);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139, 98, 72, 0.12);
+}
+
+.reveal-button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 5px;
+}
+
+.reveal-button span {
+    color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.reveal-button:hover span {
+    transform: translateY(3px);
+}
+
+/* ---------- 10. HIDDEN & REVEALED CONTENT ---------- */
+
+.hidden {
+    display: none !important;
+}
+
+.second-chapter,
+.final-note {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.second-chapter.revealed,
+.final-note.revealed {
+    animation: revealContent 1s ease forwards;
+}
+
+@keyframes revealContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- 11. FINAL MESSAGE ---------- */
+
+.final-note {
+    position: relative;
+    max-width: 620px;
+    margin: 0 auto 90px;
+    padding: 55px 45px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(48, 34, 26, 0.66),
+            rgba(22, 17, 14, 0.88)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 3px 28px 3px 28px;
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.18);
+}
+
+.final-ornament {
+    margin-bottom: 25px;
+    color: var(--gold);
+    font-size: 27px;
+}
+
+.final-note h2 {
+    margin-top: 22px;
+    color: var(--beige);
+    font-size: clamp(27px, 5vw, 39px);
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.final-text {
+    margin-top: 25px;
+    color: #d5c1ac;
+    font-size: 15px;
+    line-height: 2.1;
+}
+
+.final-emphasis {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.final-note .heart-divider {
+    margin-top: 36px;
+    margin-bottom: 24px;
+}
+
+.signature {
+    color: var(--beige);
+    font-size: 22px;
+    font-style: italic;
+}
+
+.signature-heart {
+    margin-top: 12px;
+    font-size: 22px;
+}
+
+/* ---------- 12. FOOTER ---------- */
+
+.footer {
+    padding: 30px 0 45px;
+    border-top: 1px solid rgba(213, 181, 141, 0.1);
+    text-align: center;
+}
+
+.footer p:first-child {
+    color: var(--brown-light);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.footer p:first-child span {
+    padding: 0 8px;
+    color: var(--gold);
+}
+
+.footer-caption {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* ---------- 13. GENERAL ANIMATIONS ---------- */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- 14. TABLETS ---------- */
+
+@media (max-width: 650px) {
+    .page {
+        padding: 0 20px;
+    }
+
+    .hero {
+        min-height: 85vh;
+        min-height: 85svh;
+        padding-top: 65px;
+        padding-bottom: 45px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .timeline {
+        padding-top: 10px;
+    }
+
+    .chapter {
+        padding-left: 43px;
+    }
+
+    .timeline-marker {
+        width: 34px;
+        height: 34px;
+        top: 22px;
+    }
+
+    .timeline-marker span {
+        font-size: 9px;
+    }
+
+    .chapter-card {
+        padding: 32px 25px;
+    }
+
+    .chapter-card h2 {
+        font-size: 27px;
+    }
+
+    .chapter-text {
+        font-size: 16px;
+    }
+
+    .timeline-connector {
+        margin-left: 17px;
+        height: 85px;
+    }
+
+    .reveal-area {
+        padding-left: 43px;
+        padding-bottom: 48px;
+    }
+
+    .final-note {
+        padding: 45px 28px;
+        margin-bottom: 65px;
+    }
+}
+
+/* ---------- 15. SMALL PHONES ---------- */
+
+@media (max-width: 380px) {
+    .page {
+        padding: 0 14px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .intro {
+        font-size: 14px;
+    }
+
+    .chapter {
+        padding-left: 34px;
+    }
+
+    .timeline-marker {
+        width: 29px;
+        height: 29px;
+    }
+
+    .chapter-card {
+        padding: 27px 19px;
+    }
+
+    .chapter-label {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .date {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .date span {
+        font-size: 24px;
+    }
+
+    .chapter-card h2 {
+        font-size: 24px;
+    }
+
+    .chapter-text {
+        font-size: 15px;
+    }
+
+    .chapter-note {
+        font-size: 12px;
+    }
+
+    .timeline-connector {
+        margin-left: 14px;
+    }
+
+    .reveal-area {
+        padding-left: 34px;
+    }
+
+    .reveal-button {
+        padding: 13px 12px;
+        font-size: 12px;
+    }
+
+    .final-note {
+        padding: 38px 20px;
+    }
+
+    .final-text {
+        font-size: 14px;
+    }
+}
+
+/* ---------- 16. REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
